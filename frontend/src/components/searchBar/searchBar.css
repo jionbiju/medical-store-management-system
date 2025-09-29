@@ -1,5 +1,8 @@
+.search-section {
+  width: 100%;
+}
+
 .search-container {
-    margin-top: 70px;
   padding: 2rem;
   display: flex;
   justify-content: center;
@@ -9,20 +12,13 @@
   position: relative;
   width: 100%;
   max-width: 600px;
-}
-
-.search-icon {
-  position: absolute;
-  left: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #999;
-  pointer-events: none;
+  display: flex;
+  gap: 0.5rem;
 }
 
 .search-input {
-  width: 100%;
-  padding: 0.9rem 1rem 0.9rem 3rem;
+  flex: 1;
+  padding: 0.9rem 1rem;
   border: 2px solid #e0e0e0;
   border-radius: 10px;
   font-size: 1rem;
@@ -42,18 +38,135 @@
   color: #999;
 }
 
+.search-button {
+  padding: 0.9rem 2rem;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: 'Outfit', sans-serif;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.search-button:hover {
+  background: #5568d3;
+}
+
+.search-button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.clear-button {
+  padding: 0.9rem 1.5rem;
+  background: #f44336;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: 'Outfit', sans-serif;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.clear-button:hover {
+  background: #da190b;
+}
+
+.search-results-container {
+  padding: 0 2rem 2rem 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.results-title {
+  color: #333;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.result-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 2px solid #667eea;
+}
+
+.result-name {
+  color: #667eea;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.result-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.result-details p {
+  color: #555;
+  font-size: 0.95rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.result-details p span {
+  font-weight: 600;
+  color: #333;
+}
+
+.no-results {
+  text-align: center;
+  padding: 2rem;
+  color: #999;
+  font-size: 1.1rem;
+  background: white;
+  border-radius: 12px;
+}
+
 @media (max-width: 768px) {
   .search-container {
     padding: 1rem;
   }
 
-  .search-input {
-    font-size: 0.9rem;
-    padding: 0.8rem 1rem 0.8rem 2.8rem;
+  .search-wrapper {
+    flex-direction: column;
   }
 
-  .search-icon {
-    width: 18px;
-    height: 18px;
+  .search-button, .clear-button {
+    width: 100%;
+  }
+
+  .search-results-container {
+    padding: 0 1rem 1rem 1rem;
+  }
+
+  .results-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .result-card {
+    padding: 1.2rem;
+  }
+
+  .result-name {
+    font-size: 1.1rem;
   }
 }

@@ -77,3 +77,49 @@ export const getMedicine = async (req,res) => {
         });
     }
 }
+
+//Search a medicine
+export const searchMedicine = async (req, res) => {
+    try {
+        const searchKey = req.query.query;
+
+        if (!searchKey || searchKey.trim() === '') {
+            return res.status(400).json({
+                success: false,
+                message: "Fill the search field."
+            });
+        }
+
+        
+        const medicines = await medModel.find({
+            $or: [
+                { name: { $regex: searchKey, $options: 'i' } },
+                { brand: { $regex: searchKey, $options: 'i' } }
+            ]
+        }).sort({ createdAt: -1 });
+
+        
+        if (!medicines || medicines.length === 0) {
+            return res.status(404).json({
+                success: false,
+                message: "No medicines found",
+                data: []
+            });
+        }
+
+        return res.status(200).json({
+            success: true,
+            message: `${medicines.length} medicine(s) found`,
+            count: medicines.length,
+            data: medicines
+        });
+
+    } catch (error) {
+        console.log("Error while searching medicine:", error);
+        return res.status(500).json({
+            success: false,
+            message: "Error while searching medicines",
+            error: error.message
+        });
+    }
+}
