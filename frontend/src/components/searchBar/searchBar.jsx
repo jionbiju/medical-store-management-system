@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './SearchBar.css';
 import { searchMedicine } from '../../api/medServices';
 import { toast } from 'react-toastify';
-import { data } from 'react-router-dom';
+
 
 const SearchBar = () => {
   const [searchQuery, setSearchQuery] = useState('');

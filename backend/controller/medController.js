@@ -19,10 +19,12 @@ export const addMedicine = async (req,res) => {
         });
 
         if(existMed){
-            existMed.quantity = existMed.quantity + (quantity || 1);
+            const qty = parseInt(quantity) || 1;
+            existMed.quantity = existMed.quantity + qty;
             existMed.price=price;
             const updatedMed = await existMed.save();
             return res.status(200).json({
+                success:true,
                 message:"Medicine already exists! Quantity updated.",
                 data:updatedMed
             });
@@ -119,6 +121,35 @@ export const searchMedicine = async (req, res) => {
         return res.status(500).json({
             success: false,
             message: "Error while searching medicines",
+            error: error.message
+        });
+    }
+}
+
+//Delete medicine
+export const deleteMedicine = async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        const medicine = await medModel.findById(id);
+        if (!medicine) {
+            return res.status(404).json({
+                success: false,
+                message: "Medicine not found"
+            });
+        }
+
+        await medModel.findByIdAndDelete(id);
+        return res.status(200).json({
+            success: true,
+            message: "Medicine deleted successfully"
+        });
+
+    } catch (error) {
+        console.log("Error while deleting medicine:", error);
+        return res.status(500).json({
+            success: false,
+            message: "Error while deleting medicine",
             error: error.message
         });
     }

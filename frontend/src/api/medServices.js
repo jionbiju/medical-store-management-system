@@ -26,3 +26,25 @@ export const searchMedicine = async (searchKey) => {
         throw error;
     }
 }
+
+//Add Medicine
+export const addMedicine = async (data) => {
+    try {
+        const response = await axiosInstance.post('/add',data);
+        return response.data;
+    } catch (error) {
+        console.log("Error while adding medicine:",error);
+        throw error;
+    }
+}
+
+// Delete Medicine
+export const deleteMedicine = async (id) => {
+    try {
+        const response = await axiosInstance.delete(`/delete/${id}`);
+        return response.data;
+    } catch (error) {
+        console.log("Error while deleting medicine:", error);
+        throw error;
+    }
+}
