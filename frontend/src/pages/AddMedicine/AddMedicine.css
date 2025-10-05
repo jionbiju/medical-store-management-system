@@ -88,20 +88,3 @@
   transform: none;
 }
 
-@media (max-width: 768px) {
-  .addMed-container {
-    padding: 1rem;
-  }
-
-  .addMed-card {
-    padding: 1.5rem;
-  }
-
-  .addMed-card h2 {
-    font-size: 1.5rem;
-  }
-
-  .form-row {
-    grid-template-columns: 1fr;
-  }
-}

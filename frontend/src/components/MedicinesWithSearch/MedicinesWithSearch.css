@@ -188,6 +188,7 @@
   
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
+
 }
 
 .medicine-card {
@@ -271,21 +272,3 @@
   color: #667eea;
 }
 
-@media (max-width: 768px) {
-  .med-container {
-    padding: 1rem;
-  }
-
-  .medicines-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-
-  .medicine-card {
-    padding: 1.2rem;
-  }
-
-  .medicine-name {
-    font-size: 1.1rem;
-  }
-}

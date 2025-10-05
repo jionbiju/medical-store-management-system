@@ -7,8 +7,6 @@ const Home = () => {
     <div>
       <Navbar/>
       <MedicinesWithSearch/>
-      {/* <SearchBar/>
-      <Medicines/> */}
     </div>
   )
 }
