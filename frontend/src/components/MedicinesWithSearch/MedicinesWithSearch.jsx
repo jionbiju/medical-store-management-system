@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import './MedicinesWithSearch.css'
 import { getMedicines, searchMedicine, deleteMedicine } from '../../api/medServices';
 import { MdDelete } from "react-icons/md";
 import { toast } from 'react-toastify';
